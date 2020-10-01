@@ -1,0 +1,53 @@
+.form-container {
+  margin: 0 auto;
+  width: 25%;
+}
+
+.error-info {
+  color: red;
+  background: wheat;
+  padding: 1rem;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.form {
+  margin: 1rem auto;
+  width: 100%;
+}
+
+.form > button {
+  display: block;
+  margin: 1.5rem auto;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 5px;
+  background-color: #207a20;
+  color: white;
+}
+
+.form > button:hover {
+  background-color: #1a611a;
+  cursor: pointer;
+}
+
+.form-control:not(:last-of-type) {
+  margin-bottom: 1.5rem;
+}
+
+.form-control > label {
+  display: block;
+  text-transform: capitalize;
+  padding-bottom: 1rem;
+  font-size: 1.2rem;
+
+}
+
+.form-control > input {
+  display: block;
+  width: 100%;
+  font-size: 1.2rem;
+  line-height: 1.8rem;
+}

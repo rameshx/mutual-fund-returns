@@ -1,24 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import FundReturnForm from './components/fund-returns-form/FundReturnsForm';
+import FundReturnsInfo from './components/fund-returns-info/FundReturnsInfo';
+import {
+  getPreviousDayDate,
+  getPreviousYearDate,
+  getFundReturnsData
+} from './util/funds-util';
 
 function App() {
+
+  const [fundReturnsData, setfundReturnsData] = useState();
+  const [isLoading, setLoading] = useState(false);
+
+  const onFindReturns = async ({ schemeCode, poi, horizon }) => {
+    setLoading(true);
+    const mutualFundApiResponse = await fetch(
+      `https://api.mfapi.in/mf/${schemeCode}`
+    ).then((res) => res.json());
+    
+    if (mutualFundApiResponse.data.length === 0) {
+      setfundReturnsData([]);
+      setLoading(false);
+      return;
+    }
+
+    const fromYearDate = getPreviousYearDate(+horizon);
+    const toYearDate = getPreviousDayDate(1);
+    const allfundRelatedData = getFundReturnsData(fromYearDate, toYearDate, +poi, mutualFundApiResponse.data);
+    setfundReturnsData(allfundRelatedData);
+    setLoading(false);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div>
+      <header className="header">
+        <h1 className="title">mutual fund returns</h1>
       </header>
+      <main>
+        <FundReturnForm onFindReturns={onFindReturns} />
+        <FundReturnsInfo isLoading={isLoading} fundReturnsData={fundReturnsData} />
+      </main>
     </div>
   );
 }

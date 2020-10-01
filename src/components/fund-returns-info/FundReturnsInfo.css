@@ -1,0 +1,53 @@
+.table-container {
+  width: 65%;
+  margin: 2rem auto;
+}
+
+.funds-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 1.2rem;
+  min-width: 25rem;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+}
+
+.funds-table thead tr {
+  background-color: #f3f3f3;
+  color: #383838;
+  text-align: left;
+  font-weight: bold;
+  border-bottom: 1px solid #aaaaaa;
+}
+
+.funds-table th,
+.funds-table td {
+  padding: 1rem;
+}
+
+.funds-table tbody tr {
+  border-bottom: 1px solid #aaaaaa;
+}
+
+.funds-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.info {
+  width: 23.5%;
+  margin: auto;
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 1rem;
+}
+
+.info-danger {
+  color: red;
+  background: wheat;
+}
+
+.info-normal {
+  color: green;
+  background-color: #daffa3;
+}
