@@ -51,3 +51,9 @@
   font-size: 1.2rem;
   line-height: 1.8rem;
 }
+
+@media (max-width: 62rem) {
+  .form-container {
+    width: 65%;
+  }
+}
